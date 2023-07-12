@@ -5,7 +5,7 @@ pipeline {
         stage('Build') {
             steps {
                 git 'https://github.com/mamadoucire/jenkins-php.git'
-                sh 'composer install'
+                sh 'composer install --ignore-platform-req=ext-dom --ignore-platform-req=ext-curl'
                 sh 'cp .env.example .env'
                 sh 'php artisan key:generate'
             }
