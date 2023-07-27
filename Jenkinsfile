@@ -9,6 +9,7 @@ pipeline {
                 // Étape de récupération du code source depuis un référentiel Git
                 git 'https://github.com/mamadoucire/jenkins-php.git'
             }
+        }
         stage('Install Dependencies') {
             steps {
                 // Étape d'installation de Composer
@@ -40,7 +41,6 @@ pipeline {
                 bat "xcopy /E /I /Y src/ dist/"
                 // ou utilisez d'autres commandes spécifiques à votre processus de déploiement
             }
-        }
-        
+        } 
     }
 }
