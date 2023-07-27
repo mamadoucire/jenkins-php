@@ -2,12 +2,7 @@ pipeline {
     agent {
         label 'windows' // Utiliser l'agent Windows
     }
-    options {
-        timestamps() // Ajouter des horodatages aux journaux
-    }
-    environment {
-        PATH = "C:\\chemin\\vers\\php;C:\\chemin\\vers\\composer;C:\\chemin\\vers\\phpunit;${env.PATH}" // Ajouter les chemins d'accès aux exécutables PHP, Composer et PHPUnit
-    }
+    
     stages {
         stage('Checkout') {
             steps {
@@ -47,19 +42,5 @@ pipeline {
             }
         }
         
-    }
-    post {
-         always {
-            // Nettoyer après l'exécution, par exemple, supprimer les fichiers temporaires ou réinitialiser l'environnement si nécessaire
-            deleteDir()
-        }
-        success {
-            // Actions à effectuer en cas de réussite du pipeline
-            echo 'Build successful!'
-        }
-        failure {
-            // Actions à effectuer en cas d'échec du pipeline
-            echo 'Build failed!'
-        }
     }
 }
