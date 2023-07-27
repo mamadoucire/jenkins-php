@@ -49,7 +49,7 @@ pipeline {
         
     }
     post {
-        always {
+         always {
             // Nettoyer après l'exécution, par exemple, supprimer les fichiers temporaires ou réinitialiser l'environnement si nécessaire
             deleteDir()
         }
