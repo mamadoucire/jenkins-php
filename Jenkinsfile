@@ -1,20 +1,24 @@
 pipeline {
-    agent any
-
+    agent {
+    label 'windows'
+    }
     stages {
-        stage('Build') {
+        stage('Checkout') {
             steps {
-                sh 'ls'
-                git 'https://github.com/mamadoucire/jenkins-php.git'
-                sh 'composer install --ignore-platform-req=ext-dom --ignore-platform-req=ext-curl'
-                sh 'cp .env.example .env'
-                sh 'php artisan key:generate'
+                git branch: 'master', url: 'https://github.com/mamadoucire/jenkins-php.git'
+            }
+        }
+        stage('Install') {
+            steps {
+                bat 'composer install'
             }
         }
         stage('Test') {
             steps {
-                sh './vendor/bin/phpunit'
+                bat 'vendor/bin/phpunit'
             }
         }
+        
     }
+    
 }
