@@ -12,7 +12,7 @@ pipeline {
         stage('Checkout') {
             steps {
                 // Étape de récupération du code source depuis un référentiel Git
-                git 'https://github.com/mamadoucire/laravel-project.git'
+                git 'https://github.com/mamadoucire/jenkins-php.git'
             }
         }
         stage('Install Dependencies') {
